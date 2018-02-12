@@ -82,12 +82,10 @@ class Thnxwhatsupchat extends Module
         if (Tools::isSubmit('submit'.$this->name))
         {   
             $languages = Language::getLanguages(false);
-            foreach (Thnxwhatsupchat::$setting_fields as $field)
-            {
+            foreach (Thnxwhatsupchat::$setting_fields as $field) {
                 Configuration::updateValue($field, Tools::getValue($field));
             }
-            foreach (Thnxwhatsupchat::$setting_fields_langs as $field_lang)
-            {
+            foreach (Thnxwhatsupchat::$setting_fields_langs as $field_lang) {
                 foreach ($languages as $lang) {
                     Configuration::updateValue($field_lang.'_'.$lang['id_lang'], Tools::getValue($field_lang.'_'.$lang['id_lang']));
                 }
