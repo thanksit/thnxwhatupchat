@@ -27,11 +27,11 @@
 <script type="text/javascript">
     (function () {
         var options = {
-            whatsapp: "{/literal}{if isset($thnxwhatsup_number) && !empty($thnxwhatsup_number)}{$thnxwhatsup_number}{else}+1 (800) 123-4567{/if}{literal}",
-            company_logo_url: "{/literal}{if isset($thnxwhatsup_image) && !empty($thnxwhatsup_image)}{$thnxwhatsup_image}{/if}{literal}",
-            greeting_message: "{/literal}{if isset($thnxwhatsup_message) && !empty($thnxwhatsup_message)}{$thnxwhatsup_message}{else}Hello,how may we help you? Just send us a message now to get assistance.{/if}{literal}",
-            call_to_action: "{/literal}{if isset($thnxwhatsup_action) && !empty($thnxwhatsup_action)}{$thnxwhatsup_action}{else}Message us{/if}{literal}",
-            position: "{/literal}{if isset($thnxwhatsup_position) && !empty($thnxwhatsup_position)}{$thnxwhatsup_position}{else}right{/if}{literal}",
+            whatsapp: "{/literal}{if isset($thnxwhatsup_number) && !empty($thnxwhatsup_number)}{$thnxwhatsup_number|escape:'html':'UTF-8'}{else}+1 (800) 123-4567{/if}{literal}",
+            company_logo_url: "{/literal}{if isset($thnxwhatsup_image) && !empty($thnxwhatsup_image)}{$thnxwhatsup_image|escape:'html':'UTF-8'}{/if}{literal}",
+            greeting_message: "{/literal}{if isset($thnxwhatsup_message) && !empty($thnxwhatsup_message)}{$thnxwhatsup_message|escape:'html':'UTF-8'}{else}Hello,how may we help you? Just send us a message now to get assistance.{/if}{literal}",
+            call_to_action: "{/literal}{if isset($thnxwhatsup_action) && !empty($thnxwhatsup_action)}{$thnxwhatsup_action|escape:'html':'UTF-8'}{else}Message us{/if}{literal}",
+            position: "{/literal}{if isset($thnxwhatsup_position) && !empty($thnxwhatsup_position)}{$thnxwhatsup_position|escape:'html':'UTF-8'}{else}right{/if}{literal}",
         };
         var proto = document.location.protocol, host = "whatshelp.io", url = proto + "//static." + host;
         var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
