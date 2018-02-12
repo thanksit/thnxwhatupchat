@@ -76,7 +76,7 @@ class Thnxwhatsupchat extends Module
     public function getContent()
     {
         $html = '';
-        if (Tools::isSubmit('submit'.$this->name)) {   
+        if (Tools::isSubmit('submit'.$this->name)) {
             $languages = Language::getLanguages(false);
             foreach (Thnxwhatsupchat::$setting_fields as $field) {
                 Configuration::updateValue($field, Tools::getValue($field));
@@ -111,12 +111,12 @@ class Thnxwhatsupchat extends Module
         }
     }
     public function hookdisplayfooter($params)
-    {   
+    {
         return $this->preparehookexe($params);
     }
 
     public function hookdisplayBeforeBodyClosingTag($params)
-    {   
+    {
         return $this->preparehookexe($params);
     }
     
@@ -171,8 +171,8 @@ class Thnxwhatsupchat extends Module
         $helper->table =  $this->table;
         $lang = new Language((int)Configuration::get('PS_LANG_DEFAULT'));
         $helper->default_form_language = $lang->id;
-        $helper->allow_employee_form_lang = 
-        Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG') ? Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG') : 0;
+        $helper->allow_employee_form_lang = Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG') 
+        ? Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG') : 0;
         $this->fields_form = array();
 
         $helper->identifier = $this->identifier;
