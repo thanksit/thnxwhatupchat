@@ -83,7 +83,8 @@ class Thnxwhatsupchat extends Module
             }
             foreach (Thnxwhatsupchat::$setting_fields_langs as $field_lang) {
                 foreach ($languages as $lang) {
-                    Configuration::updateValue($field_lang.'_'.$lang['id_lang'], Tools::getValue($field_lang.'_'.$lang['id_lang']));
+                    Configuration::updateValue($field_lang.'_'.$lang['id_lang'],
+                    Tools::getValue($field_lang.'_'.$lang['id_lang']));
                 }
             }
             $html = $this->displayConfirmation($this->l('Configuration updated'));
@@ -177,7 +178,8 @@ class Thnxwhatsupchat extends Module
 
         $helper->identifier = $this->identifier;
         $helper->submit_action = 'submit'.$this->name;
-        $helper->currentIndex = $this->context->link->getAdminLink('AdminModules', false).'&configure='.$this->name.'&tab_module='.$this->tab.'&module_name='.$this->name;
+        $helper->currentIndex = $this->context->link->getAdminLink('AdminModules', false)
+        .'&configure='.$this->name.'&tab_module='.$this->tab.'&module_name='.$this->name;
         $helper->token = Tools::getAdminTokenLite('AdminModules');
         $helper->tpl_vars = array(
             'fields_value' => array(),
@@ -190,7 +192,8 @@ class Thnxwhatsupchat extends Module
         $languages = Language::getLanguages(false);
         foreach (Thnxwhatsupchat::$setting_fields_langs as $field_lang) {
             foreach ($languages as $lang) {
-                $helper->tpl_vars['fields_value'][$field_lang][$lang['id_lang']] = Tools::getValue($field_lang.'_'.$lang['id_lang'], Configuration::get($field_lang.'_'.$lang['id_lang']));
+                $helper->tpl_vars['fields_value'][$field_lang][$lang['id_lang']] = Tools::getValue($field_lang.'_'.$lang['id_lang'],
+                    Configuration::get($field_lang.'_'.$lang['id_lang']));
             }
         }
         return $helper->generateForm(array($fields_form));
