@@ -50,8 +50,7 @@ class Thnxwhatsupchat extends Module
 
     public function install()
     {
-        if (parent::install())
-        {
+        if (parent::install()) {
             if (Tools::version_compare(_PS_VERSION_, '1.7', '>=') == true) {
                 $this->registerHook('displayBeforeBodyClosingTag');
             } else {
@@ -65,12 +64,10 @@ class Thnxwhatsupchat extends Module
 
     public function uninstall()
     {
-        foreach (Thnxwhatsupchat::$setting_fields as $field)
-        {
+        foreach (Thnxwhatsupchat::$setting_fields as $field) {
             Configuration::deleteByName($field);
         }
-        foreach (Thnxwhatsupchat::$setting_fields_langs as $field_lang)
-        {
+        foreach (Thnxwhatsupchat::$setting_fields_langs as $field_lang) {
             Configuration::deleteByName($field_lang);
         }
         return (parent::uninstall());
@@ -79,8 +76,7 @@ class Thnxwhatsupchat extends Module
     public function getContent()
     {
         $html = '';
-        if (Tools::isSubmit('submit'.$this->name))
-        {   
+        if (Tools::isSubmit('submit'.$this->name)) {   
             $languages = Language::getLanguages(false);
             foreach (Thnxwhatsupchat::$setting_fields as $field) {
                 Configuration::updateValue($field, Tools::getValue($field));
@@ -101,12 +97,10 @@ class Thnxwhatsupchat extends Module
         $id_lang = (int)$this->context->language->id;
         $params = $params;
         $whatsup_logo_url = Context::getContext()->shop->getBaseURL().'modules/'.$this->name.'/views/img/whatsup.png';
-        foreach (Thnxwhatsupchat::$setting_fields as $field)
-        {
+        foreach (Thnxwhatsupchat::$setting_fields as $field) {
             $this->smarty->assign(Tools::strtolower($field), Configuration::get($field));
         }
-        foreach (Thnxwhatsupchat::$setting_fields_langs as $field_lang)
-        {
+        foreach (Thnxwhatsupchat::$setting_fields_langs as $field_lang) {
             $this->smarty->assign(Tools::strtolower($field_lang), Configuration::get($field_lang.'_'.$id_lang));
         }
         $this->smarty->assign('thnxwhatsup_image', $whatsup_logo_url);
@@ -190,13 +184,11 @@ class Thnxwhatsupchat extends Module
             'languages' => $this->context->controller->getLanguages(),
             'id_language' => $this->context->language->id
         );
-        foreach (Thnxwhatsupchat::$setting_fields as $field)
-        {
+        foreach (Thnxwhatsupchat::$setting_fields as $field) {
             $helper->tpl_vars['fields_value'][$field] = Tools::getValue($field, Configuration::get($field));
         }
         $languages = Language::getLanguages(false);
-        foreach (Thnxwhatsupchat::$setting_fields_langs as $field_lang)
-        {
+        foreach (Thnxwhatsupchat::$setting_fields_langs as $field_lang) {
             foreach ($languages as $lang) {
                 $helper->tpl_vars['fields_value'][$field_lang][$lang['id_lang']] = Tools::getValue($field_lang.'_'.$lang['id_lang'], Configuration::get($field_lang.'_'.$lang['id_lang']));
             }
